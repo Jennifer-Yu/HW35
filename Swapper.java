@@ -7,6 +7,7 @@ import cs1.Keyboard;
 
 public class Swapper {
     
+    //TO PRINT THE ARRAY
     public static void print1( String[][] a ) { 
 	    for (int x = 0; x < a.length; x++) { //for the x row
 	        for (int y = 0; y < a[x].length; y++) { //for the y element
@@ -23,15 +24,17 @@ public class Swapper {
         int col2 = 0;
         int swapp = 1;
         print1(a);
-        while (swapp == 1) {
+        while (swapp == 1) { //ASKS IF YOU WANT TO SWAP ANYTHING
             try {
                 System.out.println("\n\nDo you want to swap?\n1: Yes\n2: No");
                 swapp = Keyboard.readInt();
+                //IF YOU DO WANT TO SWAP, THEN SWAP
                 if (swapp == 1) {
+                    //TAKES POSITIONS, STORES THEM, SWAPS
                     System.out.println("\n\nWhat do you want to swap?");
                     System.out.println("Row:");            
                     row1 = Keyboard.readInt();
-                    row1 -= 1;
+                    row1 -= 1; //TO ACCOUNT FOR ROW 0
                     System.out.println("Column:");    
                     col1 = Keyboard.readInt();
                     col1 -= 1;
@@ -50,15 +53,18 @@ public class Swapper {
                     a[row2][col2] = p1;
                     }
             }
-                    catch (Exception e) {
-        		       System.out.println("\n\nTry again. Rows are 1-3. Columns are 1-3.");
-        		       swap(a);
-        	        }
-        	        System.out.println("\n\nResult:");
-                    print1(a);
+            //IF YOU MESS UP, IT WILL LET YOU TRY AGAIN (CONTINUES FROM WHERE YOU LEFT OFF)
+            catch (Exception e) {
+        		    System.out.println("\n\nTry again. Rows are 1-3. Columns are 1-3.");
+        		    swap(a);
+        	}
+        	//PRINTS THE CHANGE
+        	System.out.println("\n\nResult:");
+            print1(a);
         }  
     }
     
+    //TEST
     public static void main(String[] args) {
 	    String [][] test = { {"hey", "sup", "dude"}, {"jenn", "jen", "jay"}, {"lol", "lmao", "rofl"} };
 	    swap(test);
