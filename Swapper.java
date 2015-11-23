@@ -3,6 +3,8 @@
 //HW35 -- Put it together
 //2015-11-22
 
+import cs1.Keyboard;
+
 public class Swapper {
     
     public static void print1( String[][] a ) { 
@@ -14,9 +16,52 @@ public class Swapper {
 	    }
     }
     
+    public static void swap(String[][] a) {
+        int row1 = 0;
+        int col1 = 0;
+        int row2 = 0;
+        int col2 = 0;
+        int swapp = 1;
+        print1(a);
+        while (swapp == 1) {
+            try {
+                System.out.println("\n\nDo you want to swap?\n1: Yes\n2: No");
+                swapp = Keyboard.readInt();
+                if (swapp == 1) {
+                    System.out.println("\n\nWhat do you want to swap?");
+                    System.out.println("Row:");            
+                    row1 = Keyboard.readInt();
+                    row1 -= 1;
+                    System.out.println("Column:");    
+                    col1 = Keyboard.readInt();
+                    col1 -= 1;
+                    System.out.println("\n\nWhat do you want to swap it with?");                
+                    System.out.println("Row:");   
+                    row2 = Keyboard.readInt();
+                    row2 -= 1;
+                    System.out.println("Column:");          
+                    col2 = Keyboard.readInt();
+                    col2 -= 1;
+                    String p1 = "";
+                    String p2 = "";
+                    p1 = a[row1][col1];
+                    p2 = a[row2][col2];
+                    a[row1][col1] = p2;
+                    a[row2][col2] = p1;
+                    }
+            }
+                    catch (Exception e) {
+        		       System.out.println("\n\nTry again. Rows are 1-3. Columns are 1-3.");
+        		       swap(a);
+        	        }
+        	        System.out.println("\n\nResult:");
+                    print1(a);
+        }  
+    }
+    
     public static void main(String[] args) {
 	    String [][] test = { {"hey", "sup", "dude"}, {"jenn", "jen", "jay"}, {"lol", "lmao", "rofl"} };
-	    print1(test);
+	    swap(test);
     }
     
     
